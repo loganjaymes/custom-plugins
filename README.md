@@ -1,2 +1,2 @@
 # custom-plugins
-Custom plugins using the JUCE framework.
+Custom DAW plugins using the JUCE framework.
