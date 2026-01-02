@@ -86,7 +86,13 @@ void AudioPluginAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
     juce::ignoreUnused (sampleRate, samplesPerBlock);
-	sw.prepare(sampleRate, getTotalNumOutputChannels());
+	// sw.prepare(sampleRate, getTotalNumOutputChannels()); // JUCE
+	/* C++20 */
+	sws.resize(getTotalNumOutputChannels());
+
+	for (auto& wave : sws) {
+		wave.prepare(sampleRate);
+	}
 }
 
 void AudioPluginAudioProcessor::releaseResources()
@@ -144,11 +150,13 @@ void AudioPluginAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer,
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
-        juce::ignoreUnused (channelData);
+        // juce::ignoreUnused (channelData);
         // ..do something to the data...
+
+		sws[channel].process(channelData, buffer.getNumSamples());
     }
 
-	sw.process(buffer);
+	// sw.process(buffer); // JUCE
 }
 
 bool AudioPluginAudioProcessor::hasEditor() const
