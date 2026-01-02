@@ -1,14 +1,13 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "Square.h"
+// #include "Square.h"
 
 AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor (AudioPluginAudioProcessor& p)
     : AudioProcessorEditor (&p), processorRef (p)
 {
     juce::ignoreUnused (processorRef);
 
-	addAndMakeVisible(square);
-
+	// addAndMakeVisible(square);
     setSize (850, 600);
 }
 
@@ -28,6 +27,6 @@ void AudioPluginAudioProcessorEditor::paint (juce::Graphics& g)
 void AudioPluginAudioProcessorEditor::resized()
 {
 	// put shit on screen
-	square.setBounds(100, 100, 200, 200);
+	// square.setBounds(100, 100, 200, 200);
 
 }

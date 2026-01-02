@@ -6,7 +6,7 @@
 
 #include <juce_audio_basics/juce_audio_basics.h>
 
-class Sine {
+class Sinewave {
 	public: 
 		// init
 		void prepare(double sampleRate, int numChannels) {
@@ -16,7 +16,7 @@ class Sine {
 		}
 
 		void process(juce::AudioBuffer<float>& buf) {
-			if (currTime.size() != buf.getNumChanneles()) { return; }
+			if (currTime.size() != buf.getNumChannels()) { return; }
 
 			for (int channel = 0; channel < buf.getNumChannels(); ++channel) {
 
@@ -40,4 +40,6 @@ class Sine {
 		float currSampleRate = 0.0f;
 		float timeInc = 0.0f;
 		std::vector<float> currTime;
-}
+};
+
+#endif

@@ -33,8 +33,8 @@ set(SourceFiles
         src/PluginEditor.h
         src/PluginProcessor.cpp
         src/PluginProcessor.h
-		src/Square.h
-		src/Square.cpp
+		# src/Square.h
+		# src/Square.cpp
 		src/Sinewave.h
 )
 
